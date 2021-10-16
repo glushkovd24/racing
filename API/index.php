@@ -1,10 +1,7 @@
 <?php
 	error_reporting(-1);
-	include("application/db/db.php");
+	require_once("application/db/db.php");
 	require_once('application/Application.php');
-	$params['login'] = 'admin';
-	$params['password'] = 'admin';
-	$params['method'] = 'login';
 	function router($params){
 		$method = $params['method'];
 		if($method){

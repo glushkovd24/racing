@@ -1,24 +1,26 @@
 <?php
     class DB{
-        
-    }
-    $host = "racing";
-    $user = "root";
-    $password = "";
-    $db_name = "test";
-    $connect = mysqli_connect($host, $user, $password, $db_name);
-    if($connect == true){
-        echo "DB is connected<br/>";
-    }else{
-        echo "lox<br/>";
-    }
-    //Вывод юзеров и паролей
-    /*if ($result = mysqli_query($connect, 'SELECT login, password FROM users')){
-        print("Users: <br/>");
-        while($row = mysqli_fetch_assoc($result)){
-            echo ($row['login']. " ". $row['password']);
-            echo "<br/>";
+
+    public function connectDB(){
+        $mysqli = new mysqli('racing', 'root', '', 'test');
+        if(mysqli_connect_errno()){
+            echo "DB is not connected. Error code: %s\n<br/>", mysqli_connect_error();
+            exit;
         }
-        mysqli_free_result($result);
-    }*/
+    }
+    public function addUser(){
+        if (isset($_POST['done']) && isset($_POST['login']) && isset($_POST['password'])){
+            $stmt = $mysqli->prepare("INSERT INTO users VALUES(?, ?, ?)");
+            if (!$stmt){
+                die("error");
+            }
+            $stmt->bind_param('sss', $id, $log, $par);
+            $log = $_POST['login'];
+            $par = $_POST['password'];
+            $id = null;
+            $stmt->execute();
+            $mysqli->close();
+        }
+    }
+    }
 ?>
