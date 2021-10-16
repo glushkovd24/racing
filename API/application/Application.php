@@ -11,6 +11,12 @@
 				return $this->users->login($params ['login'], $params['password']);
 			}
 		}
+		public function logout($params){
+
+		}
+		public function registration($params){
+			
+		}
 	}
 
 	?>
