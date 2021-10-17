@@ -1,14 +1,14 @@
 <?php
-    class DB{
+    //class DB{
 
-    public function connectDB(){
+    //public function connectDB(){
         $mysqli = new mysqli('racing', 'root', '', 'test');
         if(mysqli_connect_errno()){
             echo "DB is not connected. Error code: %s\n<br/>", mysqli_connect_error();
             exit;
         }
-    }
-    public function addUser(){
+    //}
+    //public function addUser(){
         if (isset($_POST['done']) && isset($_POST['login']) && isset($_POST['password'])){
             $stmt = $mysqli->prepare("INSERT INTO users VALUES(?, ?, ?)");
             if (!$stmt){
@@ -21,6 +21,6 @@
             $stmt->execute();
             $mysqli->close();
         }
-    }
-    }
+    //}
+    //}
 ?>
